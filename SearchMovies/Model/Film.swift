@@ -6,36 +6,30 @@
 //
 
 import Foundation
-import SwiftUI
 
-struct Film: Codable {
+
+struct Film : Codable {
     
-    let title: String
-    let year: String
-    let imdbIdi: String
+    let title : String
+    let year : String
+    let imdbId : String
     let type : String
-    let poster: String
-    
-    init(from decoder: any Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        self.title = try container.decode(String.self, forKey: .title)
-        self.year = try container.decode(String.self, forKey: .year)
-        self.imdbIdi = try container.decode(String.self, forKey: .imdbIdi)
-        self.type = try container.decode(String.self, forKey: .type)
-        self.poster = try container.decode(String.self, forKey: .poster)
-    }
-    }
+    let poster : String
     
     private enum CodingKeys: String, CodingKey {
         case title = "Title"
         case year = "Year"
-        case imdbIdi = "imdbID"
+        case imdbId = "imdbID"
+        case type = "Type"
         case poster = "Poster"
     }
-struct comingFilms: Codable {
-    let filmler: [Film]
-    private enum CodingKeys: String,CodingKey {
-        
+    
+}
+
+struct GelenFilmler : Codable {
+    let filmler : [Film]
+    
+    private enum CodingKeys : String, CodingKey {
         case filmler = "Search"
     }
 }
